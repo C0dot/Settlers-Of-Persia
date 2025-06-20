@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://cucjr25yjikk1"]
+
+[resource]
+PlayerLabels/base_type = &"RichTextLabel"
+PlayerLabels/colors/default_color = Color(1, 1, 1, 1)
+PlayerLabels/colors/font_outline_color = Color(0.497474, 0.497474, 0.497474, 1)
+PlayerLabels/constants/outline_size = 3
