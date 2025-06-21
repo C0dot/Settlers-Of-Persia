@@ -20,5 +20,6 @@ func _ready() -> void:
 	$"OtherTab/HBoxContainer/ActionBar/Resources".add_dev_card("Knight")
 	$"OtherTab/HBoxContainer/ActionBar/Resources".add_dev_card("Year Of Plenty")
 	$"OtherTab/HBoxContainer/ActionBar/Resources".add_dev_card("Fortnite Monopoly")
-	Globals.pan_toggle = true
+	%"CurrentPlayer".set_turn_label(Globals.player_colors[2],"priel")
+	# Globals.pan_toggle = true
 	print("end of test.gd output.")

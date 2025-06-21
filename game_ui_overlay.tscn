@@ -1,9 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8j7quidaqxsn"]
+[gd_scene load_steps=22 format=3 uid="uid://b8j7quidaqxsn"]
 
 [ext_resource type="Script" uid="uid://77rlrnlrkww4" path="res://test.gd" id="1_s5y2m"]
 [ext_resource type="Script" uid="uid://dsndow0maujxb" path="res://resources.gd" id="2_2jk4y"]
+[ext_resource type="Texture2D" uid="uid://bw4w57gvorivg" path="res://dice-1.png" id="2_adx3h"]
+[ext_resource type="Script" uid="uid://76phawhjxfm5" path="res://current_player.gd" id="2_dbbde"]
 [ext_resource type="Script" uid="uid://dpe3vrsn8ccic" path="res://log.gd" id="2_futde"]
 [ext_resource type="Script" uid="uid://bbenqatf8sy2s" path="res://bank_counter.gd" id="2_j2xrw"]
+[ext_resource type="Script" uid="uid://cr6j2pdq6xnrx" path="res://dice_container.gd" id="3_1cxvs"]
+[ext_resource type="AudioStream" uid="uid://djwm128ut6mvw" path="res://dice-rolling-sound.mp3" id="5_1cxvs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jk4y"]
 bg_color = Color(0.434544, 0.172489, 0.112079, 1)
@@ -20,15 +24,15 @@ bg_color = Color(0.976471, 0.815686, 0.152941, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbbde"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_futde"]
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.923919, 0.72256, 0.922625, 1)
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.685019, 0.889558, 1)
 border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uilok"]
 bg_color = Color(0.0588235, 0.223529, 0.313726, 1)
@@ -80,6 +84,44 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.9
 theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/OtherTab/HBoxContainer/OnMapOverlay"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="CurrentPlayer" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/bold_italics_font_size = 5
+bbcode_enabled = true
+text = "{USERNAME}'s Turn"
+fit_content = true
+script = ExtResource("2_dbbde")
+
+[node name="DiceContainer" type="HBoxContainer" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+script = ExtResource("3_1cxvs")
+
+[node name="Dice1" type="TextureButton" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_adx3h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Dice2" type="TextureButton" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_adx3h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DiceRollSfx" type="AudioStreamPlayer" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer"]
+stream = ExtResource("5_1cxvs")
+volume_db = -2.0
 
 [node name="ActionBar" type="HBoxContainer" parent="Control/OtherTab/HBoxContainer"]
 layout_mode = 2
@@ -228,6 +270,7 @@ alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_bottom = 1
 script = ExtResource("2_futde")
 
@@ -309,5 +352,7 @@ Cards
 25"
 fit_content = true
 
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer/Dice1" to="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer" method="roll_dice"]
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer/Dice2" to="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer" method="roll_dice"]
 [connection signal="mouse_entered" from="Control/TrackerTab/VBoxContainer/Log" to="Control/TrackerTab/VBoxContainer/Log" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Control/TrackerTab/VBoxContainer/Log" to="Control/TrackerTab/VBoxContainer/Log" method="_on_mouse_exited"]
