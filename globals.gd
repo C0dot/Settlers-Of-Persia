@@ -1,6 +1,6 @@
 extends Node
 
-var player_count: int = 3
+var player_count: int = 8
 var mouse_on_log: bool = false
 var pan_toggle: bool = false:
 	set(value):

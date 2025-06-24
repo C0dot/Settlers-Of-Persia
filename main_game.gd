@@ -20,5 +20,3 @@ func _process(delta: float) -> void:
 		pan_origin = $Map.position - Globals.pan_val*get_global_mouse_position()
 	if Input.is_action_pressed("pan"):
 		$Map.position = pan_origin + Globals.pan_val*get_global_mouse_position()
-	$Sprite2D.scale = $Map.scale/8
-	$Sprite2D.position = $Map.position + Vector2(493.0, 318.0)
