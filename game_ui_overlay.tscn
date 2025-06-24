@@ -108,6 +108,7 @@ script = ExtResource("3_1cxvs")
 [node name="Dice1" type="TextureButton" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_adx3h")
 ignore_texture_size = true
 stretch_mode = 5
@@ -115,6 +116,7 @@ stretch_mode = 5
 [node name="Dice2" type="TextureButton" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_adx3h")
 ignore_texture_size = true
 stretch_mode = 5
@@ -183,6 +185,7 @@ fit_content = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.75
+mouse_default_cursor_shape = 2
 text = "Dev
 Cards"
 
@@ -201,6 +204,7 @@ size_flags_stretch_ratio = 0.75
 tooltip_text = "Can you believe it guys?
 One week until easter!
 I'm so thrilled by this information!"
+mouse_default_cursor_shape = 2
 text = "Trade"
 
 [node name="DevelopmentCard" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
@@ -211,6 +215,7 @@ tooltip_text = "Requires:
 1 Sheep
 1 Ore
 1 Grain"
+mouse_default_cursor_shape = 2
 text = "Dev
 Card"
 
@@ -221,6 +226,7 @@ size_flags_stretch_ratio = 0.75
 tooltip_text = "Requires:
 1 Brick
 1 Wood"
+mouse_default_cursor_shape = 2
 text = "Road"
 
 [node name="House" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
@@ -232,6 +238,7 @@ tooltip_text = "Requires:
 1 Wood
 1 Sheep
 1 Grain"
+mouse_default_cursor_shape = 2
 text = "Dr.
 House"
 
@@ -242,6 +249,7 @@ size_flags_stretch_ratio = 0.75
 tooltip_text = "Requires:
 2 Grain
 3 Ore"
+mouse_default_cursor_shape = 2
 text = "Fortress"
 
 [node name="EndTurn" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
@@ -250,6 +258,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.75
 tooltip_text = "Jon, where is my lasagna?
 Jon, cover me in elephant green screen."
+mouse_default_cursor_shape = 2
 text = "End Turn"
 
 [node name="TrackerTab" type="MarginContainer" parent="Control"]
