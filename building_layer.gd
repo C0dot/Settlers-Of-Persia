@@ -17,10 +17,10 @@ var houses_positions : Array[Vector2i] = []
 
 var cells: Dictionary[Vector2i, Node] = {}
 
-func add_house(location, owner_id):
+func add_house(location):
 	instance = HOUSE_TILE.instantiate()
 	instance.position = location
-	instance.owner_id = owner_id
+	instance.owner_id = Globals.current_player
 	add_child(instance)
 	cells[location] = instance
 	return instance
@@ -35,15 +35,13 @@ func _ready() -> void:
 	sorted_tiles.sort_custom(tile_sort)
 	
 	for tile in sorted_tiles:
-		print(tile)
 		var world_pos = resource_tiles.map_to_local(tile)
 		for modifier in [-1,1]:
 			for position_offset in positions_offsets:
 				var house_pos = Vector2i(world_pos + modifier * position_offset)
-				print(house_pos)
 				if house_pos not in houses_positions and house_pos - Vector2i(0,1) not in houses_positions and house_pos +Vector2i(0,1) not in houses_positions:
 					houses_positions.append(house_pos)
 	# Example houses
-	add_house(houses_positions[0],2)
-	add_house(houses_positions[5],2)
+	add_house(houses_positions[0])
+	add_house(houses_positions[5])
 	
