@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkd3snadarp4n"]
+[gd_scene load_steps=4 format=3 uid="uid://bxv2cmumnweu4"]
 
-[ext_resource type="Texture2D" uid="uid://cffgoym4nkis8" path="res://house.png" id="1_82kji"]
-[ext_resource type="Script" uid="uid://b0rgdi8s1t4s6" path="res://house_tile.gd" id="2_fba6e"]
+[ext_resource type="Script" uid="uid://d4aegrv40qfb2" path="res://house_tile.gd" id="2_fba6e"]
+[ext_resource type="Texture2D" uid="uid://ofdbx6sg8aoi" path="res://house_button.png" id="2_v2qn3"]
 
-[node name="TextureButton" type="TextureButton"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("1_82kji")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dugkq"]
+size = Vector2(12.8, 12.8)
+
+[node name="Node2D" type="Node2D"]
 script = ExtResource("2_fba6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v2qn3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dugkq")

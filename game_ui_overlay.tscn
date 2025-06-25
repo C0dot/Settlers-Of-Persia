@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://djwm128ut6mvw" path="res://dice-rolling-sound.mp3" id="5_1cxvs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jk4y"]
-bg_color = Color(0.434544, 0.172489, 0.112079, 1)
+bg_color = Color(0.129412, 0.686275, 0.0745098, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adx3h"]
 bg_color = Color(0.797723, 0.274222, 0.26783, 1)
@@ -38,7 +38,7 @@ corner_radius_top_right = 5
 bg_color = Color(0.0588235, 0.223529, 0.313726, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shkgj"]
-bg_color = Color(0.434544, 0.172489, 0.112079, 1)
+bg_color = Color(0.129412, 0.686275, 0.0745098, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xon1"]
 bg_color = Color(0.797723, 0.274222, 0.26783, 1)

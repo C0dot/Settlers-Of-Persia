@@ -36,4 +36,6 @@ func _ready() -> void:
 		for position_modifier in [-1, 1]:
 			for tile_rotation in _data:
 				cells_data[Vector2i(resource_tiles.map_to_local(tile) + position_modifier*_data[tile_rotation])] = tile_rotation
-	add_road(cells_data.keys()[4],1)
+	# Example roads
+	add_road(cells_data.keys()[0],2)
+	add_road(cells_data.keys()[1],2)
