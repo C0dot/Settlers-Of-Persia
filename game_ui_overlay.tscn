@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://b8j7quidaqxsn"]
+[gd_scene load_steps=23 format=3 uid="uid://b8j7quidaqxsn"]
 
+[ext_resource type="Script" uid="uid://bd11nsjt2in5i" path="res://ui.gd" id="1_dbbde"]
 [ext_resource type="Script" uid="uid://77rlrnlrkww4" path="res://test.gd" id="1_s5y2m"]
 [ext_resource type="Script" uid="uid://dsndow0maujxb" path="res://resources.gd" id="2_2jk4y"]
 [ext_resource type="Texture2D" uid="uid://bw4w57gvorivg" path="res://dice-1.png" id="2_adx3h"]
@@ -55,6 +56,7 @@ bg_color = Color(0.976471, 0.815686, 0.152941, 1)
 bg_color = Color(0.609219, 0.2618, 0.692698, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_dbbde")
 
 [node name="Control" type="HBoxContainer" parent="."]
 anchors_preset = 15
@@ -131,6 +133,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
 [node name="Resources" type="HBoxContainer" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.75
@@ -142,7 +145,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.05
 theme_override_styles/normal = SubResource("StyleBoxFlat_2jk4y")
 text = "Wood
-19"
+0"
 fit_content = true
 
 [node name="Brick" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
@@ -151,7 +154,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.95
 theme_override_styles/normal = SubResource("StyleBoxFlat_adx3h")
 text = "Brick
-19"
+0"
 fit_content = true
 
 [node name="Sheep" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
@@ -160,7 +163,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.1
 theme_override_styles/normal = SubResource("StyleBoxFlat_ci4gx")
 text = "Sheep
-19"
+0"
 fit_content = true
 
 [node name="Grain" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
@@ -169,7 +172,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.02
 theme_override_styles/normal = SubResource("StyleBoxFlat_1cxvs")
 text = "Grain
-19"
+0"
 fit_content = true
 
 [node name="Ore" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
@@ -178,7 +181,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
 theme_override_styles/normal = SubResource("StyleBoxFlat_dbbde")
 text = "Ore
-19"
+0"
 fit_content = true
 
 [node name="DevCards" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
@@ -289,7 +292,6 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_futde")
 
 [node name="MessageBoard" type="VBoxContainer" parent="Control/TrackerTab/VBoxContainer/Log/ScrollContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -363,5 +365,6 @@ fit_content = true
 
 [connection signal="pressed" from="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer/Dice1" to="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer" method="roll_dice"]
 [connection signal="pressed" from="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer/Dice2" to="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer" method="roll_dice"]
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/ActionBar/Road" to="." method="_on_road_pressed"]
 [connection signal="mouse_entered" from="Control/TrackerTab/VBoxContainer/Log" to="Control/TrackerTab/VBoxContainer/Log" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Control/TrackerTab/VBoxContainer/Log" to="Control/TrackerTab/VBoxContainer/Log" method="_on_mouse_exited"]
