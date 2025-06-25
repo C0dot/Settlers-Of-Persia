@@ -6,14 +6,13 @@ var house = preload("res://house.png")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area: Area2D = $Area2D
 
-var _owner_id: int = 0
 
 var do_switch_to_house: bool = true
 
 var owner_id: int:
-	get: return _owner_id
+	get: return owner_id
 	set(value):
-		_owner_id = value
+		owner_id = value
 		if sprite:
 			sprite.modulate = Globals.player_colors[value % 8]  
 
@@ -34,11 +33,11 @@ func toggle_button(_toggle: bool) -> void:
 func _ready():
 	sprite.scale = Vector2(0.4, 0.4)
 	area.connect("input_event", Callable(self, "_on_input_event"))
-	sprite.modulate = Globals.player_colors[_owner_id % 8]
+	sprite.modulate = Globals.player_colors[owner_id % 8]
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.get_button_mask() == MOUSE_BUTTON_LEFT:
-		print("Clicked on house with owner:", _owner_id)
+		print("Clicked on house with owner:", owner_id)
 		if do_switch_to_house:
 			switch_to_house()
 			do_switch_to_house = false
