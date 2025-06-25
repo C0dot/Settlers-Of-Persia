@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkd3snadarp4n"]
+
+[ext_resource type="Texture2D" uid="uid://cffgoym4nkis8" path="res://house.png" id="1_82kji"]
+[ext_resource type="Script" uid="uid://b0rgdi8s1t4s6" path="res://house_tile.gd" id="2_fba6e"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("1_82kji")
+script = ExtResource("2_fba6e")
