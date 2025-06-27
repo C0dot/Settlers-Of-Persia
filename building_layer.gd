@@ -4,6 +4,8 @@ extends Node2D
 @onready var resource_tiles: TileMapLayer = $"../ResourceTiles"
 const HOUSE_TILE = preload("res://house_tile.tscn")
 var instance: Node
+var building_house_visibility: bool = true
+var building_fortress_visibility: bool = true
 
 const HEX_RADIUS = 34
 #const TEXTURE_CENTERING_OFFSET:Vector2 = Vector2(12.8,12.8)
@@ -25,10 +27,36 @@ func add_house(location):
 	cells[location] = instance
 	return instance
 
+
 func tile_sort(a: Vector2i, b: Vector2i) -> bool:
 	if a.x == b.x:
 		return a.y < b.y
 	return a.x < b.x
+	
+	
+func toggle_build_house_visibility():
+	building_house_visibility = !building_house_visibility
+	for child in get_children():
+		if child.state == 0:
+			child.visible = not child.visible
+		
+func _building_house_mode():
+	toggle_build_house_visibility()
+	await Globals.house_built
+	toggle_build_house_visibility()
+
+func toggle_build_fortress_visibility():
+	building_fortress_visibility = !building_fortress_visibility
+	for child in get_children():
+		if child.state == 1:
+			child.button_enabled = not child.button_enabled
+		
+func _building_fortress_mode():
+	toggle_build_fortress_visibility()
+	await Globals.fortress_built
+	toggle_build_fortress_visibility()
+	
+
 
 func _ready() -> void:
 	var sorted_tiles = resource_tiles.get_used_cells()
@@ -41,7 +69,15 @@ func _ready() -> void:
 				var house_pos = Vector2i(world_pos + modifier * position_offset)
 				if house_pos not in houses_positions and house_pos - Vector2i(0,1) not in houses_positions and house_pos +Vector2i(0,1) not in houses_positions:
 					houses_positions.append(house_pos)
-	# Example houses
-	add_house(houses_positions[0])
-	add_house(houses_positions[5])
+		
+	for house_pos in houses_positions:
+		add_house(house_pos)
+		
+	toggle_build_house_visibility()
+	toggle_build_fortress_visibility()
+	Globals.build_house.connect(_building_house_mode)
+	Globals.build_fortress.connect(_building_fortress_mode)
+
+	
+	
 	

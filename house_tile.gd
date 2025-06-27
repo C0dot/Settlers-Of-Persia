@@ -5,16 +5,25 @@ var house = preload("res://house.png")
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area: Area2D = $Area2D
+@onready var ButtonHint: Sprite2D = $ButtonHint
 
+# 0 - preactive button | 1 - house | 2 - fortress
+var state : int  = 0
 
-var do_switch_to_house: bool = true
-
+var _owner_id: int = 0
 var owner_id: int:
-	get: return owner_id
+	get: return _owner_id
 	set(value):
-		owner_id = value
-		if sprite:
-			sprite.modulate = Globals.player_colors[value % 8]  
+		_owner_id = value
+
+var _button_enabled: bool = true
+var button_enabled: bool:
+	get: return _button_enabled
+	set(value):
+		_button_enabled = value
+		ButtonHint.visible = value
+		if area:
+			area.input_pickable = value
 
 func switch_to_fortress() -> void:
 	if sprite:
@@ -23,24 +32,24 @@ func switch_to_fortress() -> void:
 func switch_to_house() -> void:
 	if sprite:
 		sprite.texture = house
+		sprite.modulate = Globals.player_colors[owner_id % 8]  
 		sprite.scale = Vector2(0.1, 0.1)
 
 
-func toggle_button(_toggle: bool) -> void:
-	if area:
-		area.input_pickable = _toggle
-
 func _ready():
-	sprite.scale = Vector2(0.4, 0.4)
+	sprite.scale = Vector2(0.2, 0.2)
 	area.connect("input_event", Callable(self, "_on_input_event"))
-	sprite.modulate = Globals.player_colors[owner_id % 8]
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.get_button_mask() == MOUSE_BUTTON_LEFT:
-		print("Clicked on house with owner:", owner_id)
-		if do_switch_to_house:
+		#print("Clicked on house with owner:", owner_id)
+		if state == 0:
 			switch_to_house()
-			do_switch_to_house = false
-			#toggle_button(false)
-		else:
-			switch_to_fortress()
+			state = 1
+			Globals.house_built.emit()
+			button_enabled = false
+		else: if state == 1:
+				switch_to_fortress()
+				state = 2
+				ButtonHint.visible = false
+				Globals.fortress_built.emit()

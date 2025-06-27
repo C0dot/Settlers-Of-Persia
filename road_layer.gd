@@ -3,6 +3,7 @@ extends Node2D
 @onready var resource_tiles: TileMapLayer = $"../ResourceTiles"
 const ROAD_TILE = preload("res://road_tile.tscn")
 var instance: Node
+var building_visibility: bool = true
 
 var _data: Dictionary[int, Vector2] = {
 	30: Vector2(29*sin(PI/3), 14.5),
@@ -16,13 +17,14 @@ func tile_sort(a: Vector2i, b: Vector2i) -> bool:
 	return a.x < b.x
 
 func toggle_build_visibility():
+	building_visibility = !building_visibility
 	for child in get_children():
 		if not child.active:
 			child.visible = not child.visible
 
 func _building_mode():
 	toggle_build_visibility()
-	await Globals.built
+	await Globals.road_built
 	toggle_build_visibility()
 
 func _ready() -> void:
@@ -44,3 +46,4 @@ func _ready() -> void:
 
 	toggle_build_visibility()
 	Globals.build_road.connect(_building_mode)
+	
