@@ -366,5 +366,7 @@ fit_content = true
 [connection signal="pressed" from="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer/Dice1" to="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer" method="roll_dice"]
 [connection signal="pressed" from="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer/Dice2" to="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer" method="roll_dice"]
 [connection signal="pressed" from="Control/OtherTab/HBoxContainer/ActionBar/Road" to="." method="_on_road_pressed"]
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/ActionBar/House" to="." method="_on_house_pressed"]
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/ActionBar/Fortress" to="." method="_on_fortress_pressed"]
 [connection signal="mouse_entered" from="Control/TrackerTab/VBoxContainer/Log" to="Control/TrackerTab/VBoxContainer/Log" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Control/TrackerTab/VBoxContainer/Log" to="Control/TrackerTab/VBoxContainer/Log" method="_on_mouse_exited"]

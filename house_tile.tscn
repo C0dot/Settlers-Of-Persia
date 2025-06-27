@@ -16,3 +16,9 @@ texture = ExtResource("2_v2qn3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_dugkq")
+
+[node name="ButtonHint" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.588235)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_v2qn3")

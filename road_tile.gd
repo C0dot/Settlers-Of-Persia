@@ -14,4 +14,4 @@ func _on_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -
 		texture = ROAD
 		owner_id = Globals.current_player
 		active = true
-		Globals.built.emit()
+		Globals.road_built.emit()

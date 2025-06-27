@@ -24,4 +24,7 @@ func _ready() -> void:
 	# Globals.pan_toggle = true
 	$"OtherTab/HBoxContainer/ActionBar/Resources".wood = 12
 	$"OtherTab/HBoxContainer/ActionBar/Resources".brick = 12
+	$"OtherTab/HBoxContainer/ActionBar/Resources".sheep = 12
+	$"OtherTab/HBoxContainer/ActionBar/Resources".grain = 12
+	$"OtherTab/HBoxContainer/ActionBar/Resources".ore = 12
 	print("end of test.gd output.")
