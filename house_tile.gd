@@ -1,3 +1,4 @@
+# house_tile.gd
 extends Node2D
 
 var fortress = preload("res://city.png")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://brdwc3sfxv321"]
+
+[ext_resource type="Texture2D" uid="uid://ofdbx6sg8aoi" path="res://house_button.png" id="1_psj14"]
+[ext_resource type="Script" uid="uid://bj3ts2043jjhu" path="res://robber_button_hint.gd" id="2_wgxwc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aulof"]
+radius = 20.0
+
+[node name="RobberButtonHint" type="Sprite2D"]
+self_modulate = Color(1, 1, 0, 0.819608)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_psj14")
+script = ExtResource("2_wgxwc")
+
+[node name="Button" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
+shape = SubResource("CircleShape2D_aulof")
+
+[connection signal="input_event" from="Button" to="." method="_on_input_event"]

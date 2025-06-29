@@ -1,5 +1,5 @@
+# current_player.gd
 extends RichTextLabel
-
 
 func set_turn_label(color: Color, username: String) -> void:
 	var hex = color.to_html()  

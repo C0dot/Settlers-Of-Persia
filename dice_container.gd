@@ -1,3 +1,4 @@
+# dice_container.gd
 extends HBoxContainer
 
 var dice_textures = [

@@ -1,3 +1,4 @@
+# ui.gd
 extends CanvasLayer
 
 var active_roads := 0

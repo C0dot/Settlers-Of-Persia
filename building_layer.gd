@@ -55,7 +55,6 @@ func _building_fortress_mode():
 	toggle_build_fortress_visibility()
 	await Globals.fortress_built
 	toggle_build_fortress_visibility()
-	
 
 
 func _ready() -> void:

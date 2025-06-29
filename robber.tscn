@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://baaystfxf7jyx"]
+
+[ext_resource type="Texture2D" uid="uid://b8yctu4gfiqu" path="res://icon_robber.png" id="1_ct2jv"]
+[ext_resource type="Script" uid="uid://c70bnka7mnevd" path="res://robber.gd" id="2_i72hc"]
+
+[node name="Robber" type="Sprite2D"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_ct2jv")
+script = ExtResource("2_i72hc")

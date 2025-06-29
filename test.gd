@@ -1,3 +1,4 @@
+# test.gd
 extends HBoxContainer
 
 func _ready() -> void:

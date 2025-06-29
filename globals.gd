@@ -1,3 +1,4 @@
+# globals.gd
 extends Node
 
 var current_player: int = 4
@@ -20,3 +21,4 @@ signal build_house
 signal house_built
 signal build_fortress
 signal fortress_built
+signal move_robber

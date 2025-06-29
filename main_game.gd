@@ -1,3 +1,4 @@
+# main_game.gd
 extends Node2D
 
 const PLAYER_COUNTER = preload("res://player_counter.tscn")
