@@ -38,4 +38,3 @@ func _ready() -> void:
 		add_child(instance)
 
 	Globals.build_road_toggle.connect(toggle_build_visibility)
-	

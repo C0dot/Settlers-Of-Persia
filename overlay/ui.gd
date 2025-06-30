@@ -4,7 +4,6 @@ var active_roads := 0
 var active_houses := 0
 var active_fortresses := 0
 
-
 func _on_road_pressed() -> void:
 	if %Resources.brick > 0 and %Resources.wood > 0:
 		active_roads += 1
@@ -14,7 +13,6 @@ func _on_road_pressed() -> void:
 		if my == active_roads:
 			%Resources.brick -= 1
 			%Resources.wood -= 1
-			
 
 func _on_house_pressed() -> void:
 	if %Resources.brick > 0 and %Resources.wood > 0 and  %Resources.sheep > 0 and %Resources.grain > 0:
@@ -27,7 +25,7 @@ func _on_house_pressed() -> void:
 			%Resources.wood -= 1
 			%Resources.sheep -= 1
 			%Resources.grain -= 1
-			
+
 func _on_fortress_pressed() -> void:
 	if %Resources.ore > 2 and %Resources.grain > 1:
 		active_fortresses += 1

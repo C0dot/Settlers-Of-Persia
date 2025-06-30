@@ -3,7 +3,7 @@ extends Sprite2D
 var fortress = preload("res://map/city.png")
 var house = preload("res://map/house.png")
 
-# 0 - preactive button | 1 - house | 2 - fortress
+# 0 - preactive button | 1 - house | 2 - fortress > can be used as point worth.
 var state: int  = 0
 
 var owner_id: int = 8:

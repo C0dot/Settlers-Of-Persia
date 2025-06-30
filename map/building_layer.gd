@@ -44,10 +44,5 @@ func _ready() -> void:
 		instance.position = house_pos
 		add_child(instance)
 
-	toggle_build_house_visibility()
 	Globals.build_house_toggle.connect(toggle_build_house_visibility)
 	Globals.build_fortress_toggle.connect(toggle_build_fortress_visibility)
-
-	
-	
-	

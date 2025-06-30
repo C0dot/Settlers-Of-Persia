@@ -8,7 +8,7 @@ var owner_id: int = 8:
 		owner_id = value
 
 var active: bool: 
-	get: return owner_id != 8
+	get: return -1 < owner_id and owner_id < 8
 
 func _on_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouse and event.get_button_mask() == MOUSE_BUTTON_LEFT and event.is_pressed():
