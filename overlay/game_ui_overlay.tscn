@@ -1,0 +1,372 @@
+[gd_scene load_steps=23 format=3 uid="uid://b8j7quidaqxsn"]
+
+[ext_resource type="Script" uid="uid://bd11nsjt2in5i" path="res://overlay/ui.gd" id="1_dbbde"]
+[ext_resource type="Script" uid="uid://77rlrnlrkww4" path="res://overlay/test.gd" id="1_s5y2m"]
+[ext_resource type="Script" uid="uid://dsndow0maujxb" path="res://overlay/resources.gd" id="2_2jk4y"]
+[ext_resource type="Texture2D" uid="uid://bw4w57gvorivg" path="res://overlay/dice-1.png" id="2_adx3h"]
+[ext_resource type="Script" uid="uid://76phawhjxfm5" path="res://overlay/current_player.gd" id="2_dbbde"]
+[ext_resource type="Script" uid="uid://dpe3vrsn8ccic" path="res://overlay/log.gd" id="2_futde"]
+[ext_resource type="Script" uid="uid://bbenqatf8sy2s" path="res://overlay/bank_counter.gd" id="2_j2xrw"]
+[ext_resource type="Script" uid="uid://cr6j2pdq6xnrx" path="res://overlay/dice_container.gd" id="3_1cxvs"]
+[ext_resource type="AudioStream" uid="uid://djwm128ut6mvw" path="res://overlay/dice-rolling-sound.mp3" id="5_1cxvs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jk4y"]
+bg_color = Color(0.129412, 0.686275, 0.0745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adx3h"]
+bg_color = Color(0.797723, 0.274222, 0.26783, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci4gx"]
+bg_color = Color(0.791999, 0.791999, 0.791999, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cxvs"]
+bg_color = Color(0.976471, 0.815686, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbbde"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_futde"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.685019, 0.889558, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uilok"]
+bg_color = Color(0.0588235, 0.223529, 0.313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shkgj"]
+bg_color = Color(0.129412, 0.686275, 0.0745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xon1"]
+bg_color = Color(0.797723, 0.274222, 0.26783, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf7ko"]
+bg_color = Color(0.791999, 0.791999, 0.791999, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_poylv"]
+bg_color = Color(0.976471, 0.815686, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h72kn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5us6"]
+bg_color = Color(0.609219, 0.2618, 0.692698, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_dbbde")
+
+[node name="Control" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_s5y2m")
+
+[node name="OtherTab" type="MarginContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/OtherTab"]
+layout_mode = 2
+
+[node name="OnMapOverlay" type="MarginContainer" parent="Control/OtherTab/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.9
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/OtherTab/HBoxContainer/OnMapOverlay"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="CurrentPlayer" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/bold_italics_font_size = 5
+bbcode_enabled = true
+text = "{USERNAME}'s Turn"
+fit_content = true
+script = ExtResource("2_dbbde")
+
+[node name="DiceContainer" type="HBoxContainer" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+script = ExtResource("3_1cxvs")
+
+[node name="Dice1" type="TextureButton" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_adx3h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Dice2" type="TextureButton" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_adx3h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DiceRollSfx" type="AudioStreamPlayer" parent="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer"]
+stream = ExtResource("5_1cxvs")
+volume_db = -2.0
+
+[node name="ActionBar" type="HBoxContainer" parent="Control/OtherTab/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Resources" type="HBoxContainer" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.75
+script = ExtResource("2_2jk4y")
+
+[node name="Wood" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.05
+theme_override_styles/normal = SubResource("StyleBoxFlat_2jk4y")
+text = "Wood
+0"
+fit_content = true
+
+[node name="Brick" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.95
+theme_override_styles/normal = SubResource("StyleBoxFlat_adx3h")
+text = "Brick
+0"
+fit_content = true
+
+[node name="Sheep" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.1
+theme_override_styles/normal = SubResource("StyleBoxFlat_ci4gx")
+text = "Sheep
+0"
+fit_content = true
+
+[node name="Grain" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.02
+theme_override_styles/normal = SubResource("StyleBoxFlat_1cxvs")
+text = "Grain
+0"
+fit_content = true
+
+[node name="Ore" type="RichTextLabel" parent="Control/OtherTab/HBoxContainer/ActionBar/Resources"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+theme_override_styles/normal = SubResource("StyleBoxFlat_dbbde")
+text = "Ore
+0"
+fit_content = true
+
+[node name="DevCards" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+mouse_default_cursor_shape = 2
+text = "Dev
+Cards"
+
+[node name="PlayerDevCount" type="Label" parent="Control/OtherTab/HBoxContainer/ActionBar/DevCards"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 77.0
+offset_bottom = 23.0
+mouse_filter = 1
+text = "0"
+
+[node name="Trade" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+tooltip_text = "Can you believe it guys?
+One week until easter!
+I'm so thrilled by this information!"
+mouse_default_cursor_shape = 2
+text = "Trade"
+
+[node name="DevelopmentCard" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+tooltip_text = "Requires:
+1 Sheep
+1 Ore
+1 Grain"
+mouse_default_cursor_shape = 2
+text = "Dev
+Card"
+
+[node name="Road" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+tooltip_text = "Requires:
+1 Brick
+1 Wood"
+mouse_default_cursor_shape = 2
+text = "Road"
+
+[node name="House" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+tooltip_text = "Requires:
+1 Brick
+1 Wood
+1 Sheep
+1 Grain"
+mouse_default_cursor_shape = 2
+text = "Dr.
+House"
+
+[node name="Fortress" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+tooltip_text = "Requires:
+2 Grain
+3 Ore"
+mouse_default_cursor_shape = 2
+text = "Fortress"
+
+[node name="EndTurn" type="Button" parent="Control/OtherTab/HBoxContainer/ActionBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+tooltip_text = "Jon, where is my lasagna?
+Jon, cover me in elephant green screen."
+mouse_default_cursor_shape = 2
+text = "End Turn"
+
+[node name="TrackerTab" type="MarginContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TrackerTab"]
+layout_mode = 2
+alignment = 2
+
+[node name="Log" type="MarginContainer" parent="Control/TrackerTab/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_bottom = 1
+script = ExtResource("2_futde")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TrackerTab/VBoxContainer/Log"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_futde")
+
+[node name="MessageBoard" type="VBoxContainer" parent="Control/TrackerTab/VBoxContainer/Log/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BankCounter" type="HBoxContainer" parent="Control/TrackerTab/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_j2xrw")
+
+[node name="Label" type="RichTextLabel" parent="Control/TrackerTab/VBoxContainer/BankCounter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.95
+theme_override_styles/normal = SubResource("StyleBoxFlat_uilok")
+text = "Bank"
+fit_content = true
+
+[node name="Wood" type="RichTextLabel" parent="Control/TrackerTab/VBoxContainer/BankCounter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.05
+theme_override_styles/normal = SubResource("StyleBoxFlat_shkgj")
+text = "Wood
+19"
+fit_content = true
+
+[node name="Brick" type="RichTextLabel" parent="Control/TrackerTab/VBoxContainer/BankCounter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.95
+theme_override_styles/normal = SubResource("StyleBoxFlat_0xon1")
+text = "Brick
+19"
+fit_content = true
+
+[node name="Sheep" type="RichTextLabel" parent="Control/TrackerTab/VBoxContainer/BankCounter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.1
+theme_override_styles/normal = SubResource("StyleBoxFlat_mf7ko")
+text = "Sheep
+19"
+fit_content = true
+
+[node name="Grain" type="RichTextLabel" parent="Control/TrackerTab/VBoxContainer/BankCounter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.02
+theme_override_styles/normal = SubResource("StyleBoxFlat_poylv")
+text = "Grain
+19"
+fit_content = true
+
+[node name="Ore" type="RichTextLabel" parent="Control/TrackerTab/VBoxContainer/BankCounter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+theme_override_styles/normal = SubResource("StyleBoxFlat_h72kn")
+text = "Ore
+19"
+fit_content = true
+
+[node name="DevCards" type="RichTextLabel" parent="Control/TrackerTab/VBoxContainer/BankCounter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.35
+theme_override_styles/normal = SubResource("StyleBoxFlat_y5us6")
+text = "Development
+Cards
+25"
+fit_content = true
+
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer/Dice1" to="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer" method="roll_dice"]
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer/Dice2" to="Control/OtherTab/HBoxContainer/OnMapOverlay/VBoxContainer/DiceContainer" method="roll_dice"]
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/ActionBar/Road" to="." method="_on_road_pressed"]
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/ActionBar/House" to="." method="_on_house_pressed"]
+[connection signal="pressed" from="Control/OtherTab/HBoxContainer/ActionBar/Fortress" to="." method="_on_fortress_pressed"]
+[connection signal="mouse_entered" from="Control/TrackerTab/VBoxContainer/Log" to="Control/TrackerTab/VBoxContainer/Log" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/TrackerTab/VBoxContainer/Log" to="Control/TrackerTab/VBoxContainer/Log" method="_on_mouse_exited"]

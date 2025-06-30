@@ -1,6 +1,6 @@
 extends Node2D
 
-const PLAYER_COUNTER = preload("res://player_counter.tscn")
+const PLAYER_COUNTER = preload("res://overlay/player_counter.tscn")
 var pan_origin: Vector2
 var instance: Node
 
@@ -10,7 +10,7 @@ func _ready() -> void:
 		instance.player_number = player
 		$CanvasLayer/Control/TrackerTab/VBoxContainer.add_child(instance)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Globals.mouse_on_log:
 		if Input.is_action_just_pressed("zoom_in") and $Map.scale.x < 2:
 			$Map.scale*=1.1

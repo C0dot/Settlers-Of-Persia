@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsvy53pbcsfce"]
-
-[ext_resource type="Texture2D" uid="uid://0o43yv7tubh" path="res://road.png" id="1_x0d2t"]
-
-[node name="Sprite2D" type="Sprite2D"]
-rotation = 1.5708
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("1_x0d2t")
