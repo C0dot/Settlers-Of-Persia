@@ -1,15 +1,12 @@
 # robber_layer.gd
 extends Node2D
 
-
 @onready var resource_tiles: TileMapLayer = $"../ResourceTiles"
-const POSITION_OFFSET: Vector2 = Vector2(0,-20)
 const robber = preload("res://robber.tscn")
 const robber_hint_button = preload("res://robber_button_hint.tscn")
 var instance: Node
 var current_robber_place: Node
 var robber_not_initialized : bool = true
-var robber_layer_visibility: bool = true
 
 var cells: Dictionary[Vector2i, Node] = {}
 
@@ -20,7 +17,11 @@ func add_robber_hint_button(location):
 	cells[location] = instance
 	add_child(instance)
 	
-			
+func _toggle_robber_layer_visibility() -> void:
+	for cell in cells.values():
+		if !cell.robber_on:
+			cell.visible = !cell.visible
+
 func _move_robber(location):
 	current_robber_place.robber_on = false	
 	current_robber_place = cells[Vector2i(location)]
@@ -47,7 +48,7 @@ func _ready() -> void:
 	for tile in tiles:
 		var tile_atlas_cords = resource_tiles.get_cell_atlas_coords(tile)  
 		var tile_map_cords = resource_tiles.map_to_local(tile)
-		var robber_hint_button_location = Vector2i(tile_map_cords + POSITION_OFFSET)
+		var robber_hint_button_location = Vector2i(tile_map_cords + Vector2(0,-15))
 		add_robber_hint_button(robber_hint_button_location)
 		if tile_atlas_cords.x == 0 and robber_not_initialized:
 			initialize_robber(robber_hint_button_location)

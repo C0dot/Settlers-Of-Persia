@@ -1,7 +1,6 @@
 # robber.gd
 extends Sprite2D
 
-@export var target_position: Vector2 = Vector2(0,0)
 @export var duration: float = 1.0
 
 func _ready() -> void:
