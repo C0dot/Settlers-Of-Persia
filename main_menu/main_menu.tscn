@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjn2pofmwb4rv"]
+
+[ext_resource type="Script" uid="uid://b0uk346vh71mc" path="res://main_menu/main_menu.gd" id="1_oa53l"]
+
+[node name="MainMenu" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oa53l")
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center][font_size=150]Settlers Of Persia[/font_size][/center]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Join" type="Button" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 75
+text = " Join Lobby "
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Host" type="Button" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 75
+text = " Host Lobby "
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Edit" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 75
+text = " Map Editor "
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="MarginContainer/Edit" to="." method="_on_edit_pressed"]
