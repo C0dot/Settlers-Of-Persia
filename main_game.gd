@@ -1,14 +1,22 @@
 #main_game.gd
 extends Node2D
 
+<<<<<<< HEAD
 const PLAYER_COUNTER = preload("res://player_counter.tscn")
 @export var zoomSpeed: float = 10.0
 var ZoomTarget: Vector2
+=======
+const PLAYER_COUNTER = preload("res://overlay/player_counter.tscn")
+>>>>>>> master
 var pan_origin: Vector2
 var instance: Node
 
 func _ready() -> void:
+<<<<<<< HEAD
 	# example array, array below will be recieved from the lobby scene.
+=======
+	# example array below will be recieved from the lobby scene.
+>>>>>>> master
 	var names: Array[String] = ["Priel", "Elad", "Emil", "Ariel", "Tal", "Liroy", "Sagie", "Loch Ness Monster"]
 	for player in Globals.player_count:
 		instance = PLAYER_COUNTER.instantiate()
@@ -16,10 +24,13 @@ func _ready() -> void:
 		instance.username = names.pop_front()
 		$CanvasLayer/Control/TrackerTab/VBoxContainer.add_child(instance)
 	Globals.setup_complete.emit()
+<<<<<<< HEAD
 
 	ZoomTarget = $Map.scale
+=======
+>>>>>>> master
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Globals.mouse_on_log:
 		var mouse_pos = get_viewport().get_mouse_position()
 		var map = $Map

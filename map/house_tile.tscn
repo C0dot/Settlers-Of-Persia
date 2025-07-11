@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxv2cmumnweu4"]
+
+[ext_resource type="Script" uid="uid://d4aegrv40qfb2" path="res://map/house_tile.gd" id="2_fba6e"]
+[ext_resource type="Texture2D" uid="uid://ofdbx6sg8aoi" path="res://map/house_button.png" id="2_v2qn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dugkq"]
+size = Vector2(12.8, 12.8)
+
+[node name="Sprite2D" type="Sprite2D"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_v2qn3")
+script = ExtResource("2_fba6e")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(3.5, 3.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dugkq")
+
+[node name="ButtonHint" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.588235)
+scale = Vector2(5, 5)
+texture = ExtResource("2_v2qn3")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
