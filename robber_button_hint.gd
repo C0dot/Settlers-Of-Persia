@@ -8,5 +8,4 @@ var robber_on: bool = false:
 		
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.get_button_mask() == MOUSE_BUTTON_LEFT:
-		print("Moved robber to position: ", position)
 		Globals.move_robber.emit(position)

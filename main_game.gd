@@ -1,7 +1,9 @@
-# main_game.gd
+#main_game.gd
 extends Node2D
 
 const PLAYER_COUNTER = preload("res://player_counter.tscn")
+@export var zoomSpeed: float = 10.0
+var ZoomTarget: Vector2
 var pan_origin: Vector2
 var instance: Node
 
@@ -11,13 +13,21 @@ func _ready() -> void:
 		instance.player_number = player
 		$CanvasLayer/Control/TrackerTab/VBoxContainer.add_child(instance)
 
+	ZoomTarget = $Map.scale
+
 func _process(delta: float) -> void:
 	if not Globals.mouse_on_log:
-		if Input.is_action_just_pressed("zoom_in") and $Map.scale.x < 2:
-			$Map.scale*=1.1
-		if Input.is_action_just_pressed("zoom_out") and $Map.scale.x > 0.5:
-			$Map.scale/=1.1
+		var mouse_pos = get_viewport().get_mouse_position()
+		var map = $Map
+		var map_pos_before = map.to_local(mouse_pos)
+		if Input.is_action_just_pressed("zoom_in") and map.scale.x < 2.0:
+			ZoomTarget *= 1.1
+		if Input.is_action_just_pressed("zoom_out") and map.scale.x > 0.5:
+			ZoomTarget /= 1.1
+		map.scale = map.scale.slerp(ZoomTarget, zoomSpeed * delta)
+		var map_pos_after = map.to_local(mouse_pos)
+		map.position += (map_pos_after - map_pos_before) * map.scale
 	if Input.is_action_just_pressed("pan"):
-		pan_origin = $Map.position - Globals.pan_val*get_global_mouse_position()
+		pan_origin = $Map.position - Globals.pan_val * get_viewport().get_mouse_position()
 	if Input.is_action_pressed("pan"):
-		$Map.position = pan_origin + Globals.pan_val*get_global_mouse_position()
+		$Map.position = pan_origin + Globals.pan_val * get_viewport().get_mouse_position()

@@ -10,13 +10,6 @@ var robber_not_initialized : bool = true
 
 var cells: Dictionary[Vector2i, Node] = {}
 
-
-func add_robber_hint_button(location):
-	instance = robber_hint_button.instantiate()
-	instance.position = location
-	cells[location] = instance
-	add_child(instance)
-	
 func _toggle_robber_layer_visibility() -> void:
 	for cell in cells.values():
 		if !cell.robber_on:
@@ -26,16 +19,8 @@ func _move_robber(location):
 	current_robber_place.robber_on = false	
 	current_robber_place = cells[Vector2i(location)]
 	current_robber_place.robber_on = true	
-
-func initialize_robber(location):
-	instance = robber.instantiate()
-	instance.z_index = 3
-	instance.position = location
-	robber_not_initialized = false
-	current_robber_place = cells[location]
-	current_robber_place.robber_on = true
-	add_child(instance)
 	
+# Isn't really necessary for this but i like to sort the tils anyway.
 func tile_sort(a: Vector2i, b: Vector2i) -> bool:
 	if a.x == b.x:
 		return a.y < b.y
@@ -49,8 +34,17 @@ func _ready() -> void:
 		var tile_atlas_cords = resource_tiles.get_cell_atlas_coords(tile)  
 		var tile_map_cords = resource_tiles.map_to_local(tile)
 		var robber_hint_button_location = Vector2i(tile_map_cords + Vector2(0,-15))
-		add_robber_hint_button(robber_hint_button_location)
+		instance = robber_hint_button.instantiate()
+		instance.position = robber_hint_button_location
+		cells[robber_hint_button_location] = instance
+		add_child(instance)
 		if tile_atlas_cords.x == 0 and robber_not_initialized:
-			initialize_robber(robber_hint_button_location)
+			instance = robber.instantiate()
+			instance.z_index = 3
+			instance.position = robber_hint_button_location
+			robber_not_initialized = false
+			current_robber_place = cells[robber_hint_button_location]
+			current_robber_place.robber_on = true
+			add_child(instance)
 	
 	Globals.move_robber.connect(_move_robber)
