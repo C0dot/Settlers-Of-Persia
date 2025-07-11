@@ -9,25 +9,24 @@ var dice_textures = [
 	load("res://overlay/dice-6.png")
 ]
 
-var rng = RandomNumberGenerator.new()
-
-var value: int 
+var rng = RandomNumberGenerator.new() 
 var dice1_number: int
 var dice2_number: int
+var value: int
+
+func _ready() -> void:
+	rng.randomize()
+
+func set_dice(is_enabled: bool) -> void:
+	$Dice1.disabled = not is_enabled
+	$Dice2.disabled = not is_enabled
 
 func roll_dice() -> void:
-	rng.randomize()
-	dice1_number = rng.randi_range(1, 6)
-	dice2_number = rng.randi_range(1, 6)
-	value = dice1_number + dice2_number
-	
-	print("dice1: " + str(dice1_number) + " | dice2: " + str(dice2_number) + "\ncombined: " + str(value))
+	dice1_number = rng.randi_range(0, 5)
+	dice2_number = rng.randi_range(0, 5)
+	value = dice1_number + dice2_number + 2
 	
 	$DiceRollSfx.play()
-	$Dice1.texture_normal = dice_textures[dice1_number - 1]
-	$Dice2.texture_normal = dice_textures[dice2_number - 1]
-
-
-func toggle_dice() -> void:
-	$Dice1.disabled = not $Dice1.disabled
-	$Dice2.disabled = not $Dice2.disabled
+	$Dice1.texture_normal = dice_textures[dice1_number]
+	$Dice2.texture_normal = dice_textures[dice2_number]
+	set_dice(false)
