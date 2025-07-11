@@ -8,10 +8,14 @@ var pan_origin: Vector2
 var instance: Node
 
 func _ready() -> void:
+	# example array, array below will be recieved from the lobby scene.
+	var names: Array[String] = ["Priel", "Elad", "Emil", "Ariel", "Tal", "Liroy", "Sagie", "Loch Ness Monster"]
 	for player in Globals.player_count:
 		instance = PLAYER_COUNTER.instantiate()
 		instance.player_number = player
+		instance.username = names.pop_front()
 		$CanvasLayer/Control/TrackerTab/VBoxContainer.add_child(instance)
+	Globals.setup_complete.emit()
 
 	ZoomTarget = $Map.scale
 
