@@ -23,3 +23,7 @@ var player_colors: Array[Color] = [Color("#000000"), Color("#ff0000"), Color("#0
 @warning_ignore("unused_signal") signal build_fortress_toggle
 @warning_ignore("unused_signal") signal setup_complete # this signal is used to wait for the game to load. emit it whenever some code breaks because something else hasn't loaded in yet at the start of the game.
 signal turn_passed
+<<<<<<< HEAD
+signal move_robber
+=======
+>>>>>>> master
