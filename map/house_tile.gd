@@ -1,3 +1,4 @@
+# house_tile.gd
 extends Sprite2D
 
 var fortress = preload("res://map/city.png")

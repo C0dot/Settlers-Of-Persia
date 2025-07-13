@@ -1,18 +1,11 @@
 [gd_scene load_steps=10 format=4 uid="uid://nf2u7qw5hb2s"]
 
-<<<<<<< HEAD:map.tscn
-[ext_resource type="Texture2D" uid="uid://6peiy050km77" path="res://pixelatedTileset68x58+4px-x_margin.png" id="1_c7s6e"]
-[ext_resource type="Texture2D" uid="uid://cdfigr588lmog" path="res://tokens_20x21+1px.png" id="1_wijl4"]
-[ext_resource type="Script" uid="uid://pi1c6e3e2ucp" path="res://resource_tiles.gd" id="3_iw27f"]
-[ext_resource type="Script" uid="uid://dd4crgvym00w1" path="res://road_layer.gd" id="4_p5pve"]
-[ext_resource type="Script" uid="uid://8i7v53nie1ne" path="res://building_layer.gd" id="4_urblq"]
-[ext_resource type="Script" uid="uid://vpvjsmdidv7o" path="res://robber_layer.gd" id="5_71pa8"]
-=======
 [ext_resource type="Texture2D" uid="uid://6peiy050km77" path="res://map/pixelatedTileset68x58+4px-x_margin.png" id="1_c7s6e"]
 [ext_resource type="Texture2D" uid="uid://cdfigr588lmog" path="res://map/tokens_20x21+1px.png" id="1_wijl4"]
+[ext_resource type="Script" uid="uid://pi1c6e3e2ucp" path="res://map/resource_tiles.gd" id="3_iw27f"]
 [ext_resource type="Script" uid="uid://dd4crgvym00w1" path="res://map/road_layer.gd" id="4_p5pve"]
 [ext_resource type="Script" uid="uid://8i7v53nie1ne" path="res://map/building_layer.gd" id="4_urblq"]
->>>>>>> master:map/map.tscn
+[ext_resource type="Script" uid="uid://vpvjsmdidv7o" path="res://map/robber_layer.gd" id="5_71pa8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e0an3"]
 texture = ExtResource("1_wijl4")

@@ -1,3 +1,4 @@
+# building_layer.gd
 extends Node2D
 
 @onready var resource_tiles: TileMapLayer = $"../ResourceTiles"
