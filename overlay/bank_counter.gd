@@ -1,3 +1,4 @@
+# bank_counter.gd
 extends HBoxContainer
 
 var wood: int = 19:
