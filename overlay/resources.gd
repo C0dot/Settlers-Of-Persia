@@ -1,4 +1,3 @@
-# resources.gd
 extends HBoxContainer
 
 var wood: int = 0:

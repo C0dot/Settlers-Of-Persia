@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk3tnkr2p640j"]
-
-[ext_resource type="Texture2D" uid="uid://ddk48gbtkib3m" path="res://sandBackground68x58.png" id="1_xgbnr"]
-
-[node name="Sprite2D" type="Sprite2D"]
-z_index = -1
-scale = Vector2(1.05, 1.05)
-texture = ExtResource("1_xgbnr")

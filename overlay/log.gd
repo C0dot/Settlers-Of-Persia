@@ -1,4 +1,3 @@
-# log.gd
 extends MarginContainer
 
 const MESSAGE = preload("res://overlay/message.tscn")
