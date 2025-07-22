@@ -1,4 +1,3 @@
-# player_counter.gd
 extends HBoxContainer
 
 var username: String: # set on initialization
